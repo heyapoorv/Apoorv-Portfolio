@@ -245,47 +245,47 @@ const Contact = () => {
               <form
                 ref={formRef}
                 onSubmit={sendEmail}
-                className="lg:col-span-2 bg-white/[0.03] backdrop-blur-md border border-white/10 p-10 rounded-none shadow-[0_20px_50px_rgba(0,0,0,0.5)] space-y-10 group"
+                className="lg:col-span-2 bg-white/[0.05] backdrop-blur-md border border-white/20 p-8 md:p-10 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] space-y-8 group"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="space-y-3">
-                    <label className="text-[9px] font-mono font-bold uppercase tracking-[0.3em] text-[#ff2a2a]/50 block ml-1">Name</label>
+                    <label className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#ff2a2a]/80 block ml-1">Name</label>
                     <input
                       name="name"
                       type="text"
-                      placeholder="Enter Name"
+                      placeholder="Enter your name"
                       required
-                      className="w-full bg-white/5 border-b border-white/10 py-5 px-6 text-white text-[11px] outline-none focus:border-[#ff2a2a] transition-all placeholder:text-[#ff2a2a]/20"
+                      className="w-full bg-white/5 border border-white/20 rounded-lg py-4 px-6 text-white text-sm outline-none focus:border-[#ff2a2a] focus:bg-white/10 transition-all placeholder:text-white/30"
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[9px] font-mono font-bold uppercase tracking-[0.3em] text-[#ff2a2a]/50 block ml-1">Email</label>
+                    <label className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#ff2a2a]/80 block ml-1">Email</label>
                     <input
                       name="email"
                       type="email"
-                      placeholder="Enter Email"
+                      placeholder="Enter your email"
                       required
-                      className="w-full bg-white/5 border-b border-white/10 py-5 px-6 text-white text-[11px] outline-none focus:border-[#ff2a2a] transition-all placeholder:text-[#ff2a2a]/20"
+                      className="w-full bg-white/5 border border-white/20 rounded-lg py-4 px-6 text-white text-sm outline-none focus:border-[#ff2a2a] focus:bg-white/10 transition-all placeholder:text-white/30"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <label className="text-[9px] font-mono font-bold uppercase tracking-[0.3em] text-[#ff2a2a]/50 block ml-1">Message</label>
+                  <label className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#ff2a2a]/80 block ml-1">Message</label>
                   <textarea
                     name="message"
-                    placeholder="Enter Message..."
+                    placeholder="How can I help you?"
                     required
-                    className="w-full bg-white/5 border-b border-white/10 py-5 px-6 text-white text-[11px] outline-none focus:border-[#ff2a2a] transition-all min-h-[140px] resize-none placeholder:text-[#ff2a2a]/20"
+                    className="w-full bg-white/5 border border-white/20 rounded-lg py-4 px-6 text-white text-sm outline-none focus:border-[#ff2a2a] focus:bg-white/10 transition-all min-h-[160px] resize-none placeholder:text-white/30"
                   />
                 </div>
 
                 <div className="flex justify-center md:justify-end">
                   <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 42, 42, 0.3)" }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 42, 42, 0.4)" }}
                   whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className="group flex items-center space-x-6 bg-[#ff2a2a] text-black font-black text-[11px] uppercase tracking-[0.6em] px-24 py-6 shadow-2xl transition-all"
+                  className="group flex items-center space-x-4 bg-[#ff2a2a] text-black font-black text-sm uppercase tracking-[0.3em] px-12 py-5 rounded-lg shadow-2xl transition-all w-full md:w-auto justify-center"
                 >
                   <span>SEND MESSAGE</span>
                   <FiSend className="text-lg transition-transform group-hover:translate-x-1" />
