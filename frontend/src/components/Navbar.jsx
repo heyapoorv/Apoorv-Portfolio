@@ -8,8 +8,7 @@ const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Projects', href: '#projects' },
   { name: 'Leadership', href: '#leadership' },
-  { name: 'Achievements', href: '#achievements' },
-  { name: 'Contact', href: '#contactme' }
+  { name: 'Achievements', href: '#achievements' }
 ];
 
 export default function Navbar() {
@@ -76,9 +75,9 @@ export default function Navbar() {
 
             {/* Action Group */}
             <div className="flex items-center space-x-6 border-l border-white/10 pl-10 h-6">
-                {/* Hire Me Button */}
+                {/* Contact Button */}
                 <a href="#contactme" className="px-6 py-2 border border-[#ff2a2a]/50 text-[#ff2a2a] font-sans text-[10px] font-semibold uppercase tracking-widest hover:bg-[#ff2a2a] hover:text-black transition-all duration-300 rounded-full">
-                    Hire Me
+                    Contact
                 </a>
             </div>
           </div>
@@ -125,7 +124,7 @@ export default function Navbar() {
           ))}
           <li className={`pt-6 transition-all duration-500 ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${navLinks.length * 100}ms` }}>
             <a href="#contactme" onClick={() => setIsMobileMenuOpen(false)} className="inline-block px-12 py-3 border border-[#ff2a2a]/50 text-[#ff2a2a] font-sans text-xs font-semibold uppercase tracking-widest hover:bg-[#ff2a2a] hover:text-black transition-all rounded-full">
-                Hire Me
+                Contact
             </a>
           </li>
         </ul>
