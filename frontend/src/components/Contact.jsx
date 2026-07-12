@@ -129,7 +129,7 @@ const Contact = () => {
     <div
       ref={containerRef}
       id="contactme"
-      className="relative w-full h-screen bg-[#020202] overflow-hidden flex items-center justify-center font-mono select-none"
+      className="relative w-full h-screen bg-[#020202] overflow-hidden flex items-center justify-center font-mono"
     >
       {/* 1. Loading Module (Ultra-high Z) */}
       <AnimatePresence>

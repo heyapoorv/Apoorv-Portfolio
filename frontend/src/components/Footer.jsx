@@ -37,9 +37,8 @@ const Footer = () => {
   }, []);
 
   const baseSocialLinks = [
-    { icon: <FiGithub />, label: 'GITHUB', url: profile.github, color: 'hover:text-white' },
     { icon: <FiLinkedin />, label: 'LINKEDIN', url: profile.linkedin, color: 'hover:text-blue-400' },
-    { icon: <FiTwitter />, label: 'TWITTER', url: profile.twitter, color: 'hover:text-blue-300' },
+    { icon: <FiGithub />, label: 'GITHUB', url: profile.github, color: 'hover:text-white' },
     { icon: <FiInstagram />, label: 'INSTAGRAM', url: profile.instagram, color: 'hover:text-pink-500' }
   ];
   const socialLinks = baseSocialLinks.filter(s => s.url && s.url !== '#');
@@ -169,8 +168,8 @@ const Footer = () => {
              <div className="text-[10px] text-gray-500 tracking-[0.4em] font-mono uppercase mb-1">
                 Local Time: {systemTime}
              </div>
-             <p className="text-[9px] text-gray-700 tracking-[0.2em] font-mono uppercase">
-                &copy; {profile.name} {(new Date()).getFullYear()}. ALL RIGHTS RESERVED.
+             <p className="text-[10px] text-gray-400 tracking-[0.2em] font-mono uppercase">
+                &copy; 2026 APOORV DESHMUKH. ALL RIGHTS RESERVED.
              </p>
           </div>
         </div>

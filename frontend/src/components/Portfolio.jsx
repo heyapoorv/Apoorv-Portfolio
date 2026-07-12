@@ -24,6 +24,18 @@ const Portfolio = () => {
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
 
+  // Lock body scroll when modal is open
+  React.useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedProject]);
+
   return (
     <section id="projects" className="bg-black py-24 px-6 md:px-12 lg:px-24 relative z-0">
       <div className="max-w-7xl mx-auto text-center mb-16 relative z-10">
