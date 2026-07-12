@@ -56,15 +56,13 @@ export default function Certificates() {
   return (
     <section ref={containerRef} id="certificates" className="py-24 px-6 md:px-12 lg:px-24 bg-black text-white border-t border-white/5">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
-          <div>
-            <div className="inline-block px-3 py-1 border border-[#ff2a2a]/30 bg-[#ff2a2a]/5 rounded-sm mb-4">
-              <p className="text-[#ff2a2a] font-mono text-[10px] uppercase tracking-[0.5em]">CREDENTIALS</p>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">
-              Certifications<span className="text-[#ff2a2a]">.</span>
-            </h2>
+        <div className="text-center mb-16">
+          <div className="inline-block px-3 py-1 border border-[#ff2a2a]/30 bg-[#ff2a2a]/5 rounded-sm mb-4">
+            <p className="text-[#ff2a2a] font-mono text-[10px] uppercase tracking-[0.5em]">CREDENTIALS</p>
           </div>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">
+            Certifications<span className="text-[#ff2a2a]">.</span>
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
