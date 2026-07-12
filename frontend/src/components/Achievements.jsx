@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FiStar } from 'react-icons/fi';
+import { FiStar, FiExternalLink } from 'react-icons/fi';
 import { useFirebaseData } from '../hooks/useFirebaseData';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -81,9 +81,16 @@ export default function Achievements() {
               <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ff2a2a] mb-2">
                 {item.category}
               </div>
-              <h3 className="text-xl font-bold text-white uppercase tracking-wide mb-3 group-hover:text-[#ff2a2a] transition-colors">
-                {item.title}
-              </h3>
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="text-xl font-bold text-white uppercase tracking-wide group-hover:text-[#ff2a2a] transition-colors pr-4">
+                  {item.title}
+                </h3>
+                {item.link && (
+                  <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-[#ff2a2a] transition-colors shrink-0 mt-1" title="View Reference">
+                    <FiExternalLink size={18} />
+                  </a>
+                )}
+              </div>
               <p className="text-sm font-light text-gray-400 leading-relaxed">
                 {item.description}
               </p>

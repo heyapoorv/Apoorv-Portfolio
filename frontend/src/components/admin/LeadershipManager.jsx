@@ -12,7 +12,9 @@ export default function LeadershipManager() {
     role: '',
     organization: '',
     period: '',
-    description: ''
+    responsibilities: '',
+    impact: '',
+    link: ''
   });
 
   const fetchLeadership = async () => {
@@ -33,7 +35,9 @@ export default function LeadershipManager() {
       role: item.role || '',
       organization: item.organization || '',
       period: item.period || '',
-      description: item.description || ''
+      responsibilities: item.responsibilities || '',
+      impact: item.impact || '',
+      link: item.link || ''
     });
   };
 
@@ -43,7 +47,9 @@ export default function LeadershipManager() {
       role: '',
       organization: '',
       period: '',
-      description: ''
+      responsibilities: '',
+      impact: '',
+      link: ''
     });
   };
 
@@ -63,7 +69,9 @@ export default function LeadershipManager() {
         role: formData.role,
         organization: formData.organization,
         period: formData.period,
-        description: formData.description
+        responsibilities: formData.responsibilities,
+        impact: formData.impact,
+        link: formData.link
       };
 
       if (editingItem === 'new') {
@@ -101,11 +109,12 @@ export default function LeadershipManager() {
                 <div className="flex-1">
                   <h4 className="font-bold text-white text-xs uppercase">{item.role} <span className="text-[#ff2a2a] px-2">@</span> {item.organization}</h4>
                   <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/50 my-1">
-                    {item.period}
+                    {item.period} {item.link && <span className="text-[#ff2a2a] ml-2">🔗 {item.link}</span>}
                   </div>
-                  <p className="text-[10px] text-white/70 leading-relaxed mt-2">
-                    {item.description}
-                  </p>
+                  <div className="mt-2 text-white/70">
+                    <p className="text-[10px] leading-relaxed mb-1"><span className="text-white/40 uppercase tracking-widest font-mono">Resp:</span> {item.responsibilities}</p>
+                    <p className="text-[10px] leading-relaxed"><span className="text-[#ff2a2a]/70 uppercase tracking-widest font-mono">Impact:</span> {item.impact}</p>
+                  </div>
                 </div>
                 <div className="flex flex-row sm:flex-col gap-2 mt-2 sm:mt-0 pt-2 sm:pt-0 border-t sm:border-t-0 sm:border-l border-white/5 sm:pl-4">
                   <button onClick={() => handleEdit(item)} className="text-[#ff2a2a] hover:text-white text-[10px] uppercase tracking-widest">Edit</button>
@@ -141,8 +150,18 @@ export default function LeadershipManager() {
             </div>
 
             <div>
-              <label className="block text-[10px] text-white/50 mb-2 uppercase tracking-widest">Description</label>
-              <textarea rows="3" required value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-3 text-xs text-white focus:outline-none focus:border-[#ff2a2a] resize-none" placeholder="Brief description of your responsibilities..." />
+              <label className="block text-[10px] text-white/50 mb-2 uppercase tracking-widest">Reference URL (Optional)</label>
+              <input type="text" value={formData.link} onChange={e => setFormData({...formData, link: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-3 text-xs text-white focus:outline-none focus:border-[#ff2a2a]" placeholder="https://..." />
+            </div>
+
+            <div>
+              <label className="block text-[10px] text-white/50 mb-2 uppercase tracking-widest">Responsibilities</label>
+              <textarea rows="3" required value={formData.responsibilities} onChange={e => setFormData({...formData, responsibilities: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-3 text-xs text-white focus:outline-none focus:border-[#ff2a2a] resize-none" placeholder="Brief description of your responsibilities..." />
+            </div>
+
+            <div>
+              <label className="block text-[10px] text-white/50 mb-2 uppercase tracking-widest">Impact</label>
+              <textarea rows="3" required value={formData.impact} onChange={e => setFormData({...formData, impact: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-3 text-xs text-white focus:outline-none focus:border-[#ff2a2a] resize-none" placeholder="Quantifiable impact or achievements..." />
             </div>
 
             <button disabled={saving} type="submit" className="w-full bg-[#ff2a2a] hover:bg-white text-black font-black text-xs tracking-widest uppercase py-4 rounded mt-8 transition-colors disabled:opacity-50">

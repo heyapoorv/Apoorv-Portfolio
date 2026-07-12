@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FiUsers } from 'react-icons/fi';
+import { FiUsers, FiExternalLink } from 'react-icons/fi';
 import { useFirebaseData } from '../hooks/useFirebaseData';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -83,8 +83,13 @@ export default function Leadership() {
               <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} pl-12 md:pl-0`}>
                 <div className="bg-[#0a0a0a] border border-white/10 p-8 hover:border-[#ff2a2a]/30 transition-all duration-300 group">
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-white uppercase tracking-wide group-hover:text-[#ff2a2a] transition-colors">
+                    <h3 className="text-xl font-bold text-white uppercase tracking-wide group-hover:text-[#ff2a2a] transition-colors flex items-center gap-3">
                       {item.position || item.role}
+                      {item.link && (
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-[#ff2a2a] transition-colors" title="View Reference">
+                          <FiExternalLink size={16} />
+                        </a>
+                      )}
                     </h3>
                     <span className="text-[10px] font-mono text-[#ff2a2a] tracking-widest mt-2 md:mt-0">
                       {item.duration || item.period}

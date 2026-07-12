@@ -71,16 +71,17 @@ export default function Certificates() {
           {dynamicCertificates.map((cert, i) => (
             <div
               key={i}
-              className="cert-card group flex flex-col p-8 bg-[#0a0a0a] border border-white/10 hover:border-[#ff2a2a]/40 hover:shadow-[0_0_20px_rgba(255,42,42,0.1)] transition-all duration-300 relative overflow-hidden"
+              onClick={() => cert.link && cert.link !== '#' ? window.open(cert.link, '_blank', 'noopener,noreferrer') : null}
+              className={`cert-card group flex flex-col p-8 bg-[#0a0a0a] border border-white/10 hover:border-[#ff2a2a]/40 hover:shadow-[0_0_20px_rgba(255,42,42,0.1)] transition-all duration-300 relative overflow-hidden ${cert.link && cert.link !== '#' ? 'cursor-pointer' : ''}`}
             >
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#ff2a2a]/5 rounded-full blur-2xl group-hover:bg-[#ff2a2a]/10 transition-all"></div>
 
               <div className="text-[#ff2a2a] mb-6 flex justify-between items-start">
                 <FiAward size={32} />
-                {cert.link && (
-                  <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#ff2a2a] transition-colors">
+                {cert.link && cert.link !== '#' && (
+                  <div className="text-gray-500 group-hover:text-[#ff2a2a] transition-colors">
                     <FiExternalLink size={18} />
-                  </a>
+                  </div>
                 )}
               </div>
 

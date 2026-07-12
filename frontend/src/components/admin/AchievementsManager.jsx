@@ -11,7 +11,8 @@ export default function AchievementsManager() {
   const [formData, setFormData] = useState({
     category: '',
     title: '',
-    description: ''
+    description: '',
+    link: ''
   });
 
   const fetchAchievements = async () => {
@@ -31,7 +32,8 @@ export default function AchievementsManager() {
     setFormData({
       category: item.category || '',
       title: item.title || '',
-      description: item.description || ''
+      description: item.description || '',
+      link: item.link || ''
     });
   };
 
@@ -40,7 +42,8 @@ export default function AchievementsManager() {
     setFormData({
       category: '',
       title: '',
-      description: ''
+      description: '',
+      link: ''
     });
   };
 
@@ -59,7 +62,8 @@ export default function AchievementsManager() {
       const data = {
         category: formData.category,
         title: formData.title,
-        description: formData.description
+        description: formData.description,
+        link: formData.link
       };
 
       if (editingItem === 'new') {
@@ -94,8 +98,11 @@ export default function AchievementsManager() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {achievements.map(item => (
               <div key={item.id} className="bg-black/40 border border-white/10 p-4 rounded flex flex-col gap-2 group hover:border-[#ff2a2a]/30 transition-colors">
-                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ff2a2a]">
-                  {item.category}
+                <div className="flex justify-between items-start">
+                  <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ff2a2a]">
+                    {item.category}
+                  </div>
+                  {item.link && <span className="text-white/30 text-[10px]">🔗</span>}
                 </div>
                 <h4 className="font-bold text-white text-xs uppercase">{item.title}</h4>
                 <p className="text-[10px] text-white/50 leading-relaxed truncate">
@@ -127,6 +134,11 @@ export default function AchievementsManager() {
                 <label className="block text-[10px] text-white/50 mb-2 uppercase tracking-widest">Title</label>
                 <input required type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-3 text-xs text-white focus:outline-none focus:border-[#ff2a2a]" placeholder="e.g. 1st Place at TechCrunch Disrupt" />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-[10px] text-white/50 mb-2 uppercase tracking-widest">Reference URL (Optional)</label>
+              <input type="text" value={formData.link} onChange={e => setFormData({...formData, link: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded p-3 text-xs text-white focus:outline-none focus:border-[#ff2a2a]" placeholder="https://..." />
             </div>
 
             <div>
