@@ -20,10 +20,10 @@ const Contact = () => {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_ezep6zg",
-        "template_6fbergt",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        "0GSfZwE2fSCw9lqcZ"
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(() => {
         toast.success("TRANSMISSION_COMPLETE 🚀");
