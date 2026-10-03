@@ -30,7 +30,8 @@ const Contact = () => {
         formRef.current.reset();
       })
       .catch((err) => {
-        toast.error("CONNECTION_FAILURE ❌");
+        console.error("EmailJS Error:", err);
+        toast.error(`ERROR: ${err.text || "CONNECTION_FAILURE"}`);
       });
   };
 
