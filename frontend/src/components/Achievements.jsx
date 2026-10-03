@@ -39,20 +39,21 @@ export default function Achievements() {
 
     const ctx = gsap.context(() => {
       gsap.fromTo(".achieve-card",
-        { opacity: 0, scale: 0.95 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
-          scale: 1,
-          duration: 0.5,
+          y: 0,
+          duration: 0.6,
           stagger: 0.1,
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 85%",
+            start: "top 80%",
             toggleActions: "play none none reverse"
           }
         }
       );
     }, containerRef);
+    setTimeout(() => ScrollTrigger.refresh(), 500);
     return () => ctx.revert();
   }, [dynamicAchievements]);
 
@@ -76,7 +77,7 @@ export default function Achievements() {
           {dynamicAchievements.map((item, i) => (
             <div
               key={i}
-              className="achieve-card group p-8 bg-[#0a0a0a] border border-white/10 hover:border-[#ff2a2a]/30 transition-all duration-300"
+              className="achieve-card group p-8 bg-[#0a0a0a] border border-white/10 hover:border-[#ff2a2a]/30 transition-all duration-300 opacity-0"
             >
               <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ff2a2a] mb-2">
                 {item.category}

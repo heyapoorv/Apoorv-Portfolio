@@ -8,7 +8,8 @@ const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Projects', href: '#projects' },
   { name: 'Leadership', href: '#leadership' },
-  { name: 'Achievements', href: '#achievements' }
+  { name: 'Achievements', href: '#achievements' },
+  { name: 'Certifications', href: '#certificates' }
 ];
 
 export default function Navbar() {
@@ -74,7 +75,7 @@ export default function Navbar() {
             </ul>
 
             {/* Action Group */}
-            <div className="flex items-center space-x-6 border-l border-white/10 pl-10 h-6">
+            <div className="flex items-center space-x-6 pl-10 h-6">
                 {/* Contact Button */}
                 <a href="#contactme" className="px-6 py-2 border border-[#ff2a2a]/50 text-[#ff2a2a] font-sans text-[10px] font-semibold uppercase tracking-widest hover:bg-[#ff2a2a] hover:text-black transition-all duration-300 rounded-full">
                     Contact

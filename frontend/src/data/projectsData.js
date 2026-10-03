@@ -127,7 +127,7 @@ export const projectData = [
   },
   {
     domain: "Full Stack",
-    image: "https://images.unsplash.com/photo-1579762715111-a6f1bb95a836?auto=format&fit=crop&q=80&w=800",
+    image: "https://picsum.photos/seed/resinart/800/600",
     title: "Resin Art E-commerce Website",
     shortDesc: "Custom storefront for selling handcrafted resin art.",
     tags: ["React", "Tailwind", "MongoDB"],
@@ -144,7 +144,7 @@ export const projectData = [
   },
   {
     domain: "Full Stack",
-    image: "https://images.unsplash.com/photo-1507238692062-5a042e971924?auto=format&fit=crop&q=80&w=800",
+    image: "https://picsum.photos/seed/portfolio/800/600",
     title: "Portfolio Website",
     shortDesc: "Personal developer portfolio with dynamic cinematic themes.",
     tags: ["React", "Tailwind", "GSAP"],

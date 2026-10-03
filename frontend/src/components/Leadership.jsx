@@ -39,11 +39,13 @@ export default function Leadership() {
       );
 
       tl.fromTo(".leadership-item",
-        { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.5, ease: "none", stagger: 0.15 },
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "none", stagger: 0.1 },
         "-=0.2"
       );
     }, containerRef);
+
+    setTimeout(() => ScrollTrigger.refresh(), 500);
 
     return () => ctx.revert();
   }, [dynamicLeadership]);
@@ -74,7 +76,7 @@ export default function Leadership() {
 
         <div className="flex flex-col gap-12 md:gap-24">
           {dynamicLeadership.map((item, index) => (
-            <div key={index} className={`leadership-item relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}>
+            <div key={index} className={`leadership-item relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'} opacity-0`}>
 
               {/* Center Dot */}
               <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-black border-2 border-[#ff2a2a] rounded-full -translate-x-1/2 mt-1 md:mt-0 z-10 hidden md:block"></div>

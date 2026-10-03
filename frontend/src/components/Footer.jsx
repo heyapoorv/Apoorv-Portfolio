@@ -74,7 +74,7 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8">
           
           {/* Section 1: Brand/Core */}
           <motion.div 
@@ -96,23 +96,7 @@ const Footer = () => {
             </p>
           </motion.div>
 
-          {/* Section 3: Tech Stack Info */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="space-y-6"
-          >
-            <h4 className="text-[11px] font-mono font-bold -[#ff2a2a]/80 tracking-[0.4em] uppercase">Tech Stack</h4>
-            <div className="flex flex-wrap gap-2">
-              {['Vite', 'React', 'GSAP', 'Framer', 'Three.js'].map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] text-gray-500 tracking-widest hover:-[#ff2a2a]/30 hover:-[#ff2a2a] transition-colors cursor-default">
-                  {tech.toUpperCase()}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+
 
           {/* Section 4: Social Comms */}
           <motion.div 

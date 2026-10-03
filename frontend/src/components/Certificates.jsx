@@ -40,7 +40,7 @@ export default function Certificates() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.6,
           stagger: 0.1,
           scrollTrigger: {
             trigger: containerRef.current,
@@ -50,6 +50,7 @@ export default function Certificates() {
         }
       );
     }, containerRef);
+    setTimeout(() => ScrollTrigger.refresh(), 500);
     return () => ctx.revert();
   }, [dynamicCertificates]);
 
@@ -70,7 +71,7 @@ export default function Certificates() {
             <div
               key={i}
               onClick={() => cert.link && cert.link !== '#' ? window.open(cert.link, '_blank', 'noopener,noreferrer') : null}
-              className={`cert-card group flex flex-col p-8 bg-[#0a0a0a] border border-white/10 hover:border-[#ff2a2a]/40 hover:shadow-[0_0_20px_rgba(255,42,42,0.1)] transition-all duration-300 relative overflow-hidden ${cert.link && cert.link !== '#' ? 'cursor-pointer' : ''}`}
+              className={`cert-card group flex flex-col p-8 bg-[#0a0a0a] border border-white/10 hover:border-[#ff2a2a]/40 hover:shadow-[0_0_20px_rgba(255,42,42,0.1)] transition-all duration-300 relative overflow-hidden opacity-0 ${cert.link && cert.link !== '#' ? 'cursor-pointer' : ''}`}
             >
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#ff2a2a]/5 rounded-full blur-2xl group-hover:bg-[#ff2a2a]/10 transition-all"></div>
 

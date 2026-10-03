@@ -14,98 +14,7 @@ const Contact = () => {
   const canvasRef = useRef(null);
   const formRef = useRef();
   
-  const [loaded, setLoaded] = useState(false);
-  const [loadingProgress, setLoadingProgress] = useState(0);
-  const [currentFrameIdx, setCurrentFrameIdx] = useState(0);
-
-  const frameCount = 160;
-  const imagesRef = useRef([]);
-  const seqRef = useRef({ frame: 0 });
-
-  const currentFrame = (index) => `/image3/ezgif-frame-${(index + 1).toString().padStart(3, '0')}.jpg`;
-
-  // 1. Preload Sequence
-  useEffect(() => {
-    let loadedCount = 0;
-    for (let i = 0; i < frameCount; i++) {
-        const img = new Image();
-        img.src = currentFrame(i);
-        img.onload = () => {
-            loadedCount++;
-            setLoadingProgress(Math.floor((loadedCount / frameCount) * 100));
-            if (loadedCount === frameCount) setLoaded(true);
-        };
-        img.onerror = () => {
-            loadedCount++;
-            if (loadedCount === frameCount) setLoaded(true);
-        };
-        imagesRef.current.push(img);
-    }
-  }, []);
-
-  // 2. GSAP Scroll and Render Logic (Hero Sync)
-  useEffect(() => {
-    if (!loaded) return;
-
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-
-    // Responsive Canvas Size
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      render();
-    };
-
-    const render = () => {
-      if (!canvas || !imagesRef.current.length) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      let frameIdx = Math.round(seqRef.current.frame);
-      if (frameIdx >= frameCount) frameIdx = frameCount - 1;
-
-      const img = imagesRef.current[frameIdx];
-      if (img && img.complete && img.naturalWidth !== 0) {
-        const scale = Math.max(
-          canvas.width / img.width,
-          canvas.height / img.height
-        );
-        const x = (canvas.width - img.width * scale) / 2;
-        const y = (canvas.height - img.height * scale) / 2;
-        
-        ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
-      }
-      setCurrentFrameIdx(frameIdx);
-    };
-
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-
-    // Scroll Animation - Sync with Hero logic
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=4000",
-        scrub: 1.2, // Smoother scrub
-        pin: true,
-        anticipatePin: 1
-      }
-    });
-
-    tl.to(seqRef.current, {
-      frame: frameCount - 1,
-      snap: "frame",
-      ease: "none",
-      onUpdate: render
-    });
-
-    return () => {
-      window.removeEventListener("resize", resizeCanvas);
-      ScrollTrigger.getAll().filter(t => t.trigger === containerRef.current).forEach(t => t.kill());
-    };
-  }, [loaded]);
+  const [loaded, setLoaded] = useState(true);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -131,82 +40,22 @@ const Contact = () => {
       id="contactme"
       className="relative w-full h-screen bg-[#020202] overflow-hidden flex items-center justify-center font-mono"
     >
-      {/* 1. Loading Module (Ultra-high Z) */}
-      <AnimatePresence>
-        {!loaded && (
-          <motion.div 
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 flex flex-col items-center justify-center z-[100] bg-[#020202]"
-          >
-            <div className="text-[#ff2a2a] font-mono text-[10px] uppercase tracking-[0.5em] mb-4 animate-pulse">
-              SYNCING_COMM_STREAM {loadingProgress}%
-            </div>
-            <div className="w-64 h-[2px] bg-[#ff2a2a]/30 overflow-hidden">
-               <motion.div 
-                 className="h-full bg-[#ff2a2a]" 
-                 style={{ width: `${loadingProgress}%` }}
-               />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
-      {/* 2. Cinematic Canvas Layer (Z-0) */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      />
 
       {/* 3. Aesthetic Overlays (Z-10) */}
       <div className="absolute inset-0 z-10 pointer-events-none bg-radial-vignette opacity-40" />
       <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
 
-      {/* 4. Peripheral HUD Elements (Z-20) */}
-      <AnimatePresence>
-        {loaded && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="absolute inset-0 z-20 pointer-events-none p-10"
-          >
-            {/* Top-left animated text */}
-            <div className="absolute top-12 left-12">
-              <motion.div 
-                animate={{ opacity: [0.3, 1, 0.3] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-[#ff2a2a] font-mono text-[9px] uppercase tracking-[0.7em] font-bold"
-              >
-                Get In Touch
-              </motion.div>
-            </div>
 
-            {/* Brackets */}
-            <div className="absolute top-10 left-10 w-24 h-24 border-t border-l border-[#ff2a2a]/20" />
-            <div className="absolute top-10 right-10 w-24 h-24 border-t border-r border-[#ff2a2a]/20" />
-            <div className="absolute bottom-10 left-10 w-24 h-24 border-b border-l border-[#ff2a2a]/20" />
-            <div className="absolute bottom-10 right-10 w-24 h-24 border-b border-r border-[#ff2a2a]/20" />
-
-            {/* Static HUD Text */}
-            <div className="absolute top-12 left-12 flex items-center space-x-3">
-               <FiActivity className="text-[#ff2a2a] text-xs animate-pulse" />
-               <span className="text-[#ff2a2a]/40 text-[9px] tracking-[0.4em] uppercase font-bold">Online</span>
-            </div>
-            
-            <div className="absolute bottom-12 right-12 text-right hidden lg:block">
-               <span className="text-white/10 text-[9px] tracking-[0.6em] uppercase block mb-1">Archive_003</span>
-               <span className="text-[#ff2a2a]/30 text-[9px] tracking-[0.4em] uppercase">&gt; System_Ready</span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* 5. Central Contact UI (Z-50) */}
       <AnimatePresence>
         {loaded && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            exit={{ opacity: 0, y: 30 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-50 w-full max-w-4xl px-6 pointer-events-auto"
           >
